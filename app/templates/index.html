@@ -26,18 +26,16 @@
                 <img src='../static/img/appnexus-logo.png'>
                 <h2>Campaign ID</h2>
                 <ul>
-                    <li><a href='/campaigns/1' >1</a></li>
-                    <li><a href='/campaigns/2'>2</a></li>
                 </ul>
             </section>
 
             <section id='content'>
                 <ul id='cookie'>
-                    <li>MemberName: {{ MemberName }}</li>
-                    <li>CampaignID: {{CampaignID}}</li>
-                    <li>status: {{StatusCode}}</li>
+                    <li><em>Member Name:</em> {{ MemberName }}</li>
+                    <li><em>Campaign ID:</em> {{CampaignID}}</li>
+                    <li><em>Status:</em> {{StatusCode}}</li>
                 </ul>
-                <h1>10 Minute Performance Chart<br><span>{{ start_time }} - {{ end_time }}</span></h1>
+                <h1>Win Rate Performance Chart <span>( {{ StartTime }} - {{ EndTime }} )</span></h1>
 
                 <div id='summary'>
                     <div id='total_biddable_imps'>

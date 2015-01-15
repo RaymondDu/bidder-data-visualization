@@ -21,8 +21,8 @@ h1 {
   margin: 40px 0;
 }
 h1 span {
-  font-size: 10pt;
   font-weight: normal;
+  color: #666;
 }
 h2 {
   color: #fff;
@@ -38,6 +38,9 @@ h3 {
 a {
   color: inherit;
   text-decoration: none;
+}
+em {
+  font-weight: 800;
 }
 hr {
   border: none;
@@ -159,11 +162,7 @@ main #content:last-child {
 }
 main #content #cookie li {
   display: inline-block;
-  border: 1px solid #000;
   font-size: 10pt;
-  padding: 5px;
+  padding: 8px;
   background: #f93;
-}
-main #content #chart {
-  border: 1px solid #999;
 }
