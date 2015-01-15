@@ -1,3 +1,101 @@
-body {
-  background: #f00;
+html {
+  font-family: 'helvetica neue';
+}
+header,
+li,
+#title {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+h1 {
+  font-size: 20pt;
+}
+header {
+  display: block;
+  padding: 20px;
+  width: 100%;
+  background: #f93;
+}
+main {
+  *zoom: 1;
+  width: auto;
+  max-width: 100%;
+  float: none;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0;
+  padding-right: 0;
+}
+main:before,
+main:after {
+  content: '';
+  display: table;
+}
+main:after {
+  clear: both;
+}
+main #title {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+main #side_nav {
+  float: left;
+  *zoom: 1;
+  float: left;
+  clear: none;
+  text-align: inherit;
+  width: 31.3333333333333%;
+  margin-left: 0%;
+  margin-right: 3%;
+}
+main #side_nav:before,
+main #side_nav:after {
+  content: '';
+  display: table;
+}
+main #side_nav:after {
+  clear: both;
+}
+main #side_nav:last-child {
+  margin-right: 0%;
+}
+main #side_nav li {
+  padding: 20px;
+  margin: 5px 0;
+  background: #999;
+}
+main #side_nav li:nth-of-type(1) {
+  margin: 0;
+}
+main #content {
+  display: inline-block;
+  *zoom: 1;
+  float: left;
+  clear: none;
+  text-align: inherit;
+  width: 65.6666666666667%;
+  margin-left: 0%;
+  margin-right: 3%;
+  background: #ababab;
+}
+main #content:before,
+main #content:after {
+  content: '';
+  display: table;
+}
+main #content:after {
+  clear: both;
+}
+main #content:last-child {
+  margin-right: 0%;
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding: 20px;
+  width: 100%;
+  background: #f93;
 }
