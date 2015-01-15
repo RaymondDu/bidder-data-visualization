@@ -12,9 +12,8 @@
 
         <link rel="stylesheet" href="../static/css/reset.css">
         <link rel="stylesheet" href="../static/css/style.css">
-        <link rel="stylesheet" href="css/mobile.css">
 
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script src="../static/js/main.js"></script>
     </head>
     <body>
@@ -27,7 +26,7 @@
                 <img src='../static/img/appnexus-logo.png'>
                 <h2>Campaign ID</h2>
                 <ul>
-                    <li class='selected'><a href='/campaigns/1' >1</a></li>
+                    <li><a href='/campaigns/1' >1</a></li>
                     <li><a href='/campaigns/2'>2</a></li>
                 </ul>
             </section>
@@ -42,21 +41,26 @@
 
                 <div id='summary'>
                     <div id='total_biddable_imps'>
+                        <span class="big_stat">8M</span>
                         <h3>Total Biddable Impressions</h3>
-                        {{ total_biddable_imps }}
                     </div>
                     <div id='total_bids_pct'>
+                        <span class="big_stat">80%</span>
                         <h3>Bid Percentage</h3>
-                        {{ bid_pct }}
                     </div>
                     <div id='total_win_pct'>
+                        <span class="big_stat">50%</span>
                         <h3>Win Percentage</h3>
-                        {{ win_pct }}
                     </div>
                 </div>
 
                 <div class='clearfix'></div>
-                <div id={{ chartID|safe }} class="chart" style="height: 100px; width: 500px"></div>
+
+                <hr>
+
+                <div id='chart'>
+                    <div id={{ chartID|safe }} class="chart" style="height: 100px; width: 500px"></div>
+                </div>
             </section>
 
         </main>
@@ -70,8 +74,6 @@
             var chart    = {{ chart|safe }}
             var legend   = {{ legend|safe }}
         </script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script src="http://code.highcharts.com/highcharts.js"></script>
-        <script src="../static/js/main.js"></script>
     </body>
 </html>
