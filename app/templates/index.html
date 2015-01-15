@@ -10,7 +10,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="../static/css/reset.css">
         <link rel="stylesheet" href="../static/css/style.css">
         <link rel="stylesheet" href="css/mobile.css">
 
@@ -19,29 +19,36 @@
     </head>
     <body>
         <header>
+            AppNexus Hackathon 2015
         </header>
 
         <main>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        <section id='title'>
-            <h1>Hello, {{ name }}</h1>
-        </section>
+            <!--[if lt IE 7]>
+                <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+            <![endif]-->
+            <section id='title'>
+                <h1>Hello, AppNexian</h1>
+            </section>
 
-        <section id='side_nav'>
-            <ul>
-                <li>{{ campaign_id }}</li>
-            </ul>
-        </section>
+            <section id='side_nav'>
+                <ul>
+                    <li>{{ campaign_id }}</li>
+                    <li>{{ campaign_id }}</li>
+                    <li>{{ campaign_id }}</li>
+                    <li>{{ campaign_id }}</li>
+                    <li>{{ campaign_id }}</li>
+                    <li>{{ campaign_id }}</li>
+                </ul>
+            </section>
 
-        <section id='content'>
-            <p>billing_name: {{ billing_name }}<br>short_name: {{short_name}}<br>api_last_modified: {{api_last_modified}}</p>
-        </section>
+            <section id='content'>
+                <p>billing_name: {{ billing_name }}<br>short_name: {{short_name}}<br>api_last_modified: {{api_last_modified}}</p>
+            </section>
 
         </main>
 
         <footer>
+            AppNexus
         </footer>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
