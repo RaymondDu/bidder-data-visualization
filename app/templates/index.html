@@ -28,13 +28,13 @@
             <![endif]-->
             <section id='side_nav'>
                 <ul>
-                    <li>{{ campaign_id }}</li>
-                    <li>{{ campaign_id }}</li>
+                    <li>{{ CampaignID }}</li>
+                    <!--<li>{{ campaign_id }}</li>-->
                 </ul>
             </section>
 
             <section id='content'>
-                <p>billing_name: {{ billing_name }}<br>short_name: {{short_name}}<br>api_last_modified: {{api_last_modified}}</p>
+                <p>MemberName: {{ MemberName }}<br>CampaignID: {{CampaignID}}<br>status: {{StatusCode}}</p>
                 <div id={{ chartID|safe }} class="chart" style="height: 100px; width: 500px"></div>
             </section>
 
@@ -42,11 +42,12 @@
 
         <script>
             var chart_id = {{ chartID|safe }}
-            var series = {{ series|safe }}
-            var title = {{ title|safe }}
-            var xAxis = {{ xAxis|safe }}
-            var yAxis = {{ yAxis|safe }}
-            var chart = {{ chart|safe }}
+            var series   = {{ series|safe }}
+            var title    = {{ title|safe }}
+            var xAxis    = {{ xAxis|safe }}
+            var yAxis    = {{ yAxis|safe }}
+            var chart    = {{ chart|safe }}
+            var legend   = {{ legend|safe }}
         </script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script src="http://code.highcharts.com/highcharts.js"></script>
