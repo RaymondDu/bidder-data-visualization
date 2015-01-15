@@ -8,6 +8,16 @@ $(document).ready(function() {
 	});
 
 
+	
+/*	var campaign_id_list =  [6596095, 6513780, 6766936, 6513786];
+
+	for ( i = 0; i < campaign_id_list.length; i++ ) {
+		var link = "<a href='/campaigns/" + campaign_id_list[i] + "'><li>" + campaign_id_list[i] + "</li></a>";
+		$('#side_nav ul').append(link);
+		
+	}
+*/
+
 	$("li").each(function(){
 		$(this).hover(function(){
 			$(this).addClass('selected');	

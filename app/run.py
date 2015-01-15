@@ -7,31 +7,47 @@ app = Flask(__name__)
 @app.route('/')
 #when you hit '/' run this function
 def index():	
-	return render_template('index.html')
+
+	return render_template('index.html',)
 
 @app.route('/campaigns/<campaign_id>')
 def chartById(campaign_id):
 	# curl get
-	'''
-	url = "http://localhost:8610/1.0.0/members/"+member_id
+	
+	url = "http://777.bjohn.dev.nym2.adnexus.net:8880/campaignstats/"+campaign_id
 	r = requests.get(url)	
 	# process response
 	status_code = r.status_code
-	content = r.content
 	json_data = r.json()
-	member = json_data["members"][0]
-	billing_name = member.get("billing_name")
-	short_name = member.get("short_name")
-	api_last_modified = member["api_last_modified"]
-	'''
-	
-	status_code = 200
+
+	inventory_data = []
+	bidding_data = []
+	winning_data = []
+	time_sequence = []
+	sample_list = json_data["campaignstats"]
+	# loop through this array can be 0 to max length of 10
+	for i in range(len(sample_list)):
+		sample = sample_list[i]
+		t = sample.get("sample_time")
+		# 2015-01-15T19:39:49Z
+		u = datetime.datetime.strptime(t, "%Y-%m-%dT%H:%M:%SZ")
+		hh_mm_str = u.strftime("%H:%M")
+		time_sequence.append(hh_mm_str)
+		inventory_data.append(sample.get("elig_inv_rate"))
+		bidding_data.append(sample.get("bid_rate"))
+		winning_data.append(sample.get("spend_rate"))
+
+	inventory_data.reverse()
+	bidding_data.reverse()
+	winning_data.reverse()
+	time_sequence.reverse()
+
 	member_name = "AT&T"
 	campaignid = campaign_id
-	inventory_data = [50, 100, 200, 150, 300, 500, 800, 400, 100, 20]
-	bidding_data   = [45, 60,  150, 50,  290, 250, 600, 100, 90,  15]
-	winning_data   = [40, 30,  100, 35,  280, 100, 500, 20,  80,  15]
-	time_sequence  = ["9:31", "9:32", "9:33", "9:34", "9:35", "9:36", "9:37", "9:38", "9:39", "9:40"]
+	#inventory_data = [50, 100, 200, 150, 300, 500, 800, 400, 100, 20]
+	#bidding_data   = [45, 60,  150, 50,  290, 250, 600, 100, 90,  15]
+	#winning_data   = [40, 30,  100, 35,  280, 100, 500, 20,  80,  15]
+	#time_sequence  = ["9:31", "9:32", "9:33", "9:34", "9:35", "9:36", "9:37", "9:38", "9:39", "9:40"]
 
 	# calculate total number of imps
 	sum_imps = 0
