@@ -25,15 +25,37 @@
             <![endif]-->
             <section id='side_nav'>
                 <img src='../static/img/appnexus-logo.png'>
-                <h1>Campaign ID</h1>
+                <h2>Campaign ID</h2>
                 <ul>
-                    <li class='selected'><a href='/campaigns/1' >1 {{ campaign_id }}</a></li>
+                    <li class='selected'><a href='/campaigns/1' >1</a></li>
                     <li><a href='/campaigns/2'>2</a></li>
                 </ul>
             </section>
 
             <section id='content'>
-                <p>MemberName: {{ MemberName }}<br>CampaignID: {{CampaignID}}<br>status: {{StatusCode}}</p>
+                <ul id='cookie'>
+                    <li>MemberName: {{ MemberName }}</li>
+                    <li>CampaignID: {{CampaignID}}</li>
+                    <li>status: {{StatusCode}}</li>
+                </ul>
+                <h1>10 Minute Performance Chart<br><span>{{ start_time }} - {{ end_time }}</span></h1>
+
+                <div id='summary'>
+                    <div id='total_biddable_imps'>
+                        <h3>Total Biddable Impressions</h3>
+                        {{ total_biddable_imps }}
+                    </div>
+                    <div id='total_bids_pct'>
+                        <h3>Bid Percentage</h3>
+                        {{ bid_pct }}
+                    </div>
+                    <div id='total_win_pct'>
+                        <h3>Win Percentage</h3>
+                        {{ win_pct }}
+                    </div>
+                </div>
+
+                <div class='clearfix'></div>
                 <div id={{ chartID|safe }} class="chart" style="height: 100px; width: 500px"></div>
             </section>
 

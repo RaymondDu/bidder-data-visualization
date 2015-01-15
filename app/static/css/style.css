@@ -5,14 +5,37 @@ a {
   color: inherit;
   text-decoration: none;
 }
+.clearfix {
+  clear: both;
+}
 li,
 #title {
   padding-left: 20px;
   padding-right: 20px;
 }
+h1,
+h2,
+h3 {
+  font-family: avenir;
+}
 h1 {
   font-size: 20pt;
+  font-weight: 800;
+  margin: 40px 0;
+}
+h1 span {
+  font-size: 10pt;
+  font-weight: normal;
+}
+h2 {
   color: #fff;
+  font-size: 13pt;
+  padding: 40px 0 0px 20px;
+}
+h3 {
+  font-size: 13pt;
+  font-weight: 800;
+  margin-bottom: 40px;
 }
 main {
   *zoom: 1;
@@ -32,10 +55,6 @@ main:after {
 }
 main:after {
   clear: both;
-}
-main #title {
-  padding-top: 50px;
-  padding-bottom: 20px;
 }
 main #side_nav {
   float: left;
@@ -76,6 +95,32 @@ main #side_nav .selected {
   background: #666564;
   color: #fff;
 }
+main #summary {
+  margin: 0;
+  background: #e3e2e5;
+}
+main #summary div {
+  *zoom: 1;
+  float: left;
+  clear: none;
+  text-align: inherit;
+  width: 33.3333333333333%;
+  margin-left: 0%;
+  margin-right: 0%;
+  padding: 0 0 30px 0;
+  text-align: center;
+}
+main #summary div:before,
+main #summary div:after {
+  content: '';
+  display: table;
+}
+main #summary div:after {
+  clear: both;
+}
+main #summary div:last-child {
+  margin-right: 0%;
+}
 main #content {
   display: inline-block;
   *zoom: 1;
@@ -97,4 +142,11 @@ main #content:after {
 }
 main #content:last-child {
   margin-right: 0%;
+}
+main #content #cookie li {
+  display: inline-block;
+  border: 1px solid #000;
+  font-size: 10pt;
+  padding: 5px;
+  background: #f93;
 }
