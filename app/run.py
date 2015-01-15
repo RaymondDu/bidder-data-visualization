@@ -31,7 +31,7 @@ def chart(chartID = 'chart_ID', chart_type = 'column', chart_height = 350):
 	xAxis = {"title": {"text": 'time'}, "categories": ['9:32 AM', '9:33 AM', '9:44 AM', '9:45 AM']}
 	yAxis = {"title": {"text": 'Impressions'}, "plotLines": [{"value": 0,"width": 1,"color": '#808080'}]}
 	legend = {"layout": 'vertical',"align": 'right',"verticalAlign": 'middle',"borderWidth": 0}
-	return render_template('chart.html', chartID=chartID, chart=chart, series=series, title=title, xAxis=xAxis, yAxis=yAxis, legend=legend)
+	return render_template('index.html', chartID=chartID, chart=chart, series=series, title=title, xAxis=xAxis, yAxis=yAxis, legend=legend)
 
 if __name__ == '__main__':
 	app.run(debug=True)
