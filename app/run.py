@@ -3,13 +3,13 @@ import requests
 
 app = Flask(__name__)
 
-@app.route('/<name>')
+@app.route('/')
 #when you hit '/' run this function
-def index(name):	
-	return render_template('index.html', name=name)
+def index():	
+	return render_template('index.html')
 
 @app.route('/campaigns/<campaign_id>')
-def printStatusCode(campaign_id):
+def chartById(campaign_id):
 	# curl get
 	'''
 	url = "http://localhost:8610/1.0.0/members/"+member_id
@@ -23,6 +23,7 @@ def printStatusCode(campaign_id):
 	short_name = member.get("short_name")
 	api_last_modified = member["api_last_modified"]
 	'''
+	
 	status_code = 200
 	member_name = "AT&T"
 	campaignid = campaign_id
@@ -41,7 +42,23 @@ def printStatusCode(campaign_id):
 	xAxis = {"title": {"text": 'time'}, "categories": time_sequence}
 	yAxis = {"title": {"text": 'Impressions'}, "plotLines": [{"value": 0,"width": 1,"color": '#808080'}]}
 	legend = {"layout": 'vertical',"align": 'right',"verticalAlign": 'middle',"borderWidth": 0}
-	return render_template('index.html', StatusCode=status_code, MemberName=member_name, CampaignID=campaignid, chartID=chartID, chart=chart, series=series, title=title, xAxis=xAxis, yAxis=yAxis, legend=legend)
+	return render_template('index.html', 
+		StartTime=time_sequence[0]
+		EndTime=time_sequence[9]
+		StatusCode=status_code, 
+		MemberName=member_name, 
+		CampaignID=campaignid, 
+		chartID=chartID, 
+		chart=chart, 
+		series=series, 
+		title=title, 
+		xAxis=xAxis, 
+		yAxis=yAxis, 
+		legend=legend)
+
+@app.route('/test')
+def test():
+	json_data = {"hostAddress":"10.6.253.135","count":2,"start":0,"end":1,"numberOfElements":2,"campaignstats":[{"id":1,"sample_time":null,"bid_rate":0.0,"elig_inv_rate":0.0,"spend_rate":0.0},{"id":1,"sample_time":null,"bid_rate":0.0,"elig_inv_rate":0.0,"spend_rate":0.0}]}
 
 if __name__ == '__main__':
 	app.run(debug=True)
