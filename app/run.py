@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 import requests
+import datetime
 
 app = Flask(__name__)
 
@@ -35,7 +36,7 @@ def chartById(campaign_id):
 	chartID = 'chart_ID'
 	chart_type = 'column'
 	chart_height = 600
-	chart_width = 1000
+	chart_width = 948
 	chart = {"renderTo": chartID, "type": chart_type, "height": chart_height, "width": chart_width}
 	series = [{"name": 'Total Biddable Imps', "data": inventory_data}, {"name": 'Bids', "data": bidding_data}, {"name":'Wins', "data": winning_data}]
 	title = {"text": 'bidding overtime'}
@@ -43,8 +44,8 @@ def chartById(campaign_id):
 	yAxis = {"title": {"text": 'Impressions'}, "plotLines": [{"value": 0,"width": 1,"color": '#808080'}]}
 	legend = {"layout": 'vertical',"align": 'right',"verticalAlign": 'middle',"borderWidth": 0}
 	return render_template('index.html', 
-		StartTime=time_sequence[0]
-		EndTime=time_sequence[9]
+		StartTime=time_sequence[0],
+		EndTime=time_sequence[9],
 		StatusCode=status_code, 
 		MemberName=member_name, 
 		CampaignID=campaignid, 
@@ -58,8 +59,30 @@ def chartById(campaign_id):
 
 @app.route('/test')
 def test():
-	json_data = {"hostAddress":"10.6.253.135","count":2,"start":0,"end":1,"numberOfElements":2,"campaignstats":[{"id":1,"sample_time":null,"bid_rate":0.0,"elig_inv_rate":0.0,"spend_rate":0.0},{"id":1,"sample_time":null,"bid_rate":0.0,"elig_inv_rate":0.0,"spend_rate":0.0}]}
+	inventory_data = []
+	bidding_data = []
+	winning_data = []
+	time_sequence = []
+	json_data = {"hostAddress":"10.6.253.135","count":2,"start":0,"end":1,"numberOfElements":2,"campaignstats":[{"id":1,"sample_time":"2015-01-15T19:39:49Z","bid_rate":200,"elig_inv_rate":200,"spend_rate":200},{"id":1,"sample_time":"2015-01-15T19:37:15Z","bid_rate":100,"elig_inv_rate":100,"spend_rate":100}]}
+	sample_list = json_data["campaignstats"]
+	# loop through this array can be 0 to max length of 10
+	for i in range(len(sample_list)):
+		sample = sample_list[i]
+		t = sample.get("sample_time")
+		# 2015-01-15T19:39:49Z
+		u = datetime.datetime.strptime(t, "%Y-%m-%dT%H:%M:%SZ")
+		hh_mm_str = u.strftime("%H:%M")
+		time_sequence.append(hh_mm_str)
+		inventory_data.append(sample.get("elig_inv_rate"))
+		bidding_data.append(sample.get("bid_rate"))
+		winning_data.append(sample.get("spend_rate"))
 
+	print time_sequence
+	print inventory_data
+	print bidding_data
+	print winning_data
+	return
+		
 if __name__ == '__main__':
 	app.run(debug=True)
 
