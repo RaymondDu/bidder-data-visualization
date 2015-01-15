@@ -32,11 +32,27 @@ def chartById(campaign_id):
 	bidding_data   = [45, 60,  150, 50,  290, 250, 600, 100, 90,  15]
 	winning_data   = [40, 30,  100, 35,  280, 100, 500, 20,  80,  15]
 	time_sequence  = ["9:31", "9:32", "9:33", "9:34", "9:35", "9:36", "9:37", "9:38", "9:39", "9:40"]
+
+	# calculate total number of imps
+	sum_imps = 0
+	for imp in inventory_data:
+		sum_imps+=imp
+
+	sum_bids = 0
+	for bid in bidding_data:
+		sum_bids+=bid
+
+	sum_wins = 0
+	for win in winning_data:
+		sum_wins+=win
+
+	pct_bid = int(100*sum_bids/float(sum_imps))
+	pct_win = int(100*sum_wins/float(sum_bids))
 	# chart settings
 	chartID = 'chart_ID'
 	chart_type = 'column'
 	chart_height = 600
-	chart_width = 948
+	chart_width = 845
 	chart = {"renderTo": chartID, "type": chart_type, "height": chart_height, "width": chart_width}
 	series = [{"name": 'Total Biddable Imps', "data": inventory_data}, {"name": 'Bids', "data": bidding_data}, {"name":'Wins', "data": winning_data}]
 	title = {"text": 'bidding overtime'}
@@ -44,6 +60,9 @@ def chartById(campaign_id):
 	yAxis = {"title": {"text": 'Impressions'}, "plotLines": [{"value": 0,"width": 1,"color": '#808080'}]}
 	legend = {"layout": 'vertical',"align": 'right',"verticalAlign": 'middle',"borderWidth": 0}
 	return render_template('index.html', 
+		TotalImps=sum_imps,
+		PctBid = pct_bid,
+		PctWin = pct_win,
 		StartTime=time_sequence[0],
 		EndTime=time_sequence[9],
 		StatusCode=status_code, 

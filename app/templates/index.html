@@ -26,7 +26,7 @@
                 <img src='../static/img/appnexus-logo.png'>
                 <h2>Campaign ID</h2>
                 <ul>
-                    <li><a href='/campaigns/1' >1</a></li>
+                    <li><a href='/campaigns/1'>1</a></li>
                     <li><a href='/campaigns/2'>2</a></li>
                 </ul>
             </section>
@@ -37,19 +37,19 @@
                     <li>CampaignID: {{CampaignID}}</li>
                     <li>status: {{StatusCode}}</li>
                 </ul>
-                <h1>10 Minute Performance Chart<br><span>{{ start_time }} - {{ end_time }}</span></h1>
+                <h1>10 Minute Performance Chart<br><span>{{ StartTime }} - {{ EndTime }}</span></h1>
 
                 <div id='summary'>
                     <div id='total_biddable_imps'>
-                        <span class="big_stat">8M</span>
+                        <span class="big_stat">{{TotalImps}}</span>
                         <h3>Total Biddable Impressions</h3>
                     </div>
                     <div id='total_bids_pct'>
-                        <span class="big_stat">80%</span>
+                        <span class="big_stat">{{PctBid}}%</span>
                         <h3>Bid Percentage</h3>
                     </div>
                     <div id='total_win_pct'>
-                        <span class="big_stat">50%</span>
+                        <span class="big_stat">{{PctWin}}%</span>
                         <h3>Win Percentage</h3>
                     </div>
                 </div>
