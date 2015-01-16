@@ -62,8 +62,8 @@ def chartById(campaign_id):
 	for win in winning_data:
 		sum_wins+=win
 
-	pct_bid = int(100*sum_bids/float(sum_imps))
-	pct_win = int(100*sum_wins/float(sum_bids))
+	pct_bid = int(100*sum_bids/(float(sum_imps)+1))
+	pct_win = int(100*sum_wins/(float(sum_bids)+1))
 	# chart settings
 	chartID = 'chart_ID'
 	chart_type = 'column'
