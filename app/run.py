@@ -36,7 +36,7 @@ def chartById(campaign_id):
 		inventory_data.append(sample.get("elig_inv_rate"))
 		bidding_data.append(sample.get("bid_rate"))
 		winning_data.append(sample.get("spend_rate"))
-
+	# the data is coming in desc order of sample_time
 	inventory_data.reverse()
 	bidding_data.reverse()
 	winning_data.reverse()
