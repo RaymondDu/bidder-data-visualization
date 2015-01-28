@@ -47,7 +47,7 @@ $(document).ready(function() {
 function test()
 {
 	if (campaign_id != "" && campaign_name != "") {
-		$.getJSON($SCRIPT_ROOT + '/admin/add', {
+		$.postJSON($SCRIPT_ROOT + '/admin/add', {
 			id: $('input#campaign_id').val(),
 			name: $('input#campaign_name').val()
 		}, function(data) {
