@@ -51,6 +51,7 @@ def chartById(campaign_id):
 
 	member_name = "AT&T"
 	campaignid = campaign_id
+	campaignlist = [{"id":6596095,"name":"Data Targeted"},{"id":6513780,"name":"Optimized to CPA"},{"id":6766936,"name":"Abandoned Shopping Cart"},{"id":6513786,"name":"Prospecting"}]
 	#inventory_data = [50, 100, 200, 150, 300, 500, 800, 400, 100, 20]
 	#bidding_data   = [45, 60,  150, 50,  290, 250, 600, 100, 90,  15]
 	#winning_data   = [40, 30,  100, 35,  280, 100, 500, 20,  80,  15]
@@ -92,6 +93,7 @@ def chartById(campaign_id):
 		StatusCode=status_code, 
 		MemberName=member_name, 
 		CampaignID=campaignid, 
+		CampaignList = campaignlist,
 		chartID=chartID, 
 		chart=chart, 
 		series=series, 
