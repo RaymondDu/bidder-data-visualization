@@ -38,9 +38,9 @@ def addCampaign():
 	headers = {'content-type': 'application/json'}
 	r = requests.post(url, data=json.dumps(payload), headers=headers)
 	status_code = r.status_code
-	print "StatusCode is: "+str(status_code) + "\n"
+
 	if(status_code != 201):
-		print "StatusCode is not 201 but is: "+status_code+"\n"
+		print "StatusCode is not 201 but is: "+str(status_code)+"\n"
     # refreshing the campaign list
 	campaign_list = []
 	campaign_list = getCampaignList()
