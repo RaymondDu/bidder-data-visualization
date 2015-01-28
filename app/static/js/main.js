@@ -59,9 +59,9 @@ $(document).ready(function() {
 
 });
 
-function addMember()
+function addCampaign()
 {
-	if (campaign_id != "" && campaign_name != "") {
+	if ($('input#campaign_id').val() != "" && $('input#campaign_name').val() != "") {
 		$.getJSON($SCRIPT_ROOT + '/admin/add', {
 			id: $('input#campaign_id').val(),
 			name: $('input#campaign_name').val()
