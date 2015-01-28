@@ -10,64 +10,76 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="../static/css/reset.css">
         <link rel="stylesheet" href="../static/css/style.css">
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script src="../static/js/main.js"></script>
     </head>
-    <body>
-
-        <main>
+    <body data-title="{{ CampaignID }}">
             <!--[if lt IE 7]>
                 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
             <![endif]-->
             <section id='side_nav'>
-                <a href="/"><img src='../static/img/appnexus-logo.png'></a>
-                <h2>Campaign ID</h2>
-                <ul>
-                    <a href="/campaigns/6596095"><li>6596095 - Data Targeted</li></a>
-                    <a href="/campaigns/6513780"><li>6513780 - Optimized to CPA</li></a>
-                    <a href="/campaigns/6766936"><li>6766936 - Abandoned Shopping Cart</li></a>
-                    <a href="/campaigns/6513786"><li>6513786 - Prospecting</li></a>
-                </ul>
+                <a href="/" id='logo'><img src='../static/img/appnexus-logo.png'></a>
+                <nav>
+                    <h2>Campaign ID</h2>
+                    <hr>
+                    <ul>
+                        <a href="/campaigns/6596095"><li data-id='6596095'>6596095 - Data Targeted</li></a>
+                        <a href="/campaigns/6513780"><li data-id='6513780'>6513780 - Optimized to CPA</li></a>
+                        <a href="/campaigns/6766936"><li data-id='6766936'>6766936 - Abandoned Shopping Cart</li></a>
+                        <a href="/campaigns/6513786"><li data-id='6513786'>6513786 - Prospecting</li></a>
+                        <a href="/campaigns/6513761"><li>6513761 - Rubicon CPA Optimization</li></a>
+                        <a href="/campaigns/6513753"><li>6513753 - CPC Optimization</li></a>
+                        <a href="/campaigns/6596170"><li>6596170 - High Base Bid Remarketing</li></a>
+                        <a href="/campaigns/6513768"><li>6513768 - AdX CPA Optimization</li></a>
+                        <a href="/campaigns/6563080"><li>6563080 - Deal Targeting</li></a>
+                        <a href="/campaigns/6703035"><li>6703035 - High-bid Remarketing</li></a>
+                    </ul>
+                </nav>
             </section>
 
             <section id='content'>
-                <ul id='cookie'>
-                    <li><em>Member Name:</em> {{ MemberName }}</li>
+                <ul id='heading-main'>
+                    <!-- <li><em>Member Name:</em> {{ MemberName }}</li>
                     <li><em>Campaign ID:</em> {{CampaignID}}</li>
-                    <li><em>Status:</em> {{StatusCode}}</li>
+                    <li><em>Status:</em> {{StatusCode}}</li> -->
                 </ul>
 
-                <h1>Win Rate Performance Chart <span>( {{ StartTime }} - {{ EndTime }} )</span></h1>
-
-
-                <div id='summary'>
-                    <div id='total_biddable_imps'>
-                        <span class="big_stat">{{TotalImps}}</span>
-                        <h3>Total Biddable Impressions</h3>
+                <main>
+                    <h1>{{ MemberName }} Campaign: {{ CampaignID }}<br><span>10 Minute Performance ({{ StartTime }} to {{ EndTime }} UTC)</span></h1>
+                    <div id='summary'>
+                        <div class='container'>
+                            <div class='stats' id='total_biddable_imps'>
+                                <span class="big_stat">{{TotalImps}}</span>
+                                Biddable Impressions
+                            </div>
+                        </div>
+                        <div class='container'>
+                            <div class='stats' id='total_bids_pct'>
+                                <span class="big_stat">{{PctBid}}%</span>
+                                Bids on Biddable Imps
+                            </div>
+                        </div>
+                        <div class='container'>
+                            <div class='stats' id='total_win_pct'>
+                                <span class="big_stat">{{PctWin}}%</span>
+                                Wins on Bids
+                            </div>
+                        </div>
                     </div>
-                    <div id='total_bids_pct'>
-                        <span class="big_stat">{{PctBid}}%</span>
-                        <h3>Bid Percentage</h3>
+
+                    <div class='clearfix'></div>
+
+                    <div id='chart'>
+                        <div id='chart-title'>Bid Stats per Minute</div>
+                        <div id={{ chartID|safe }} class="chart"></div>
                     </div>
-                    <div id='total_win_pct'>
-                        <span class="big_stat">{{PctWin}}%</span>
-                        <h3>Win Percentage</h3>
-                    </div>
-                </div>
-
-                <div class='clearfix'></div>
-
-                <hr>
-
-                <div id='chart'>
-                    <div id={{ chartID|safe }} class="chart" style="height: 100px; width: 500px"></div>
-                </div>
+                </main>
             </section>
-
-        </main>
 
         <script>
             var chart_id = {{ chartID|safe }}

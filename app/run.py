@@ -1,6 +1,9 @@
 from flask import Flask, render_template
 import requests
 import datetime
+import locale
+
+locale.setlocale(locale.LC_ALL, 'en_US')
 
 app = Flask(__name__)
 
@@ -8,9 +11,10 @@ app = Flask(__name__)
 #when you hit '/' run this function
 def index():	
 
-	return render_template('index.html',)
+	return render_template('index_landing.html', MemberName="AT&T")
 
 @app.route('/campaigns/<campaign_id>')
+
 def chartById(campaign_id):
 	# curl get
 	
@@ -64,19 +68,19 @@ def chartById(campaign_id):
 
 	pct_bid = int(100*sum_bids/(float(sum_imps)+1))
 	pct_win = int(100*sum_wins/(float(sum_bids)+1))
+	# format biddable imps with commas
+	sum_imps_formatted = locale.format("%d", sum_imps, grouping=True)
 	# chart settings
 	chartID = 'chart_ID'
 	chart_type = 'column'
-	chart_height = 600
-	chart_width = 845
-	chart = {"renderTo": chartID, "type": chart_type, "height": chart_height, "width": chart_width}
+	chart = {"renderTo": chartID, "type": chart_type, "backgroundColor":"rgba(255, 255, 255, 0.1)"}
 	series = [{"name": 'Total Biddable Imps', "data": inventory_data}, {"name": 'Bids', "data": bidding_data}, {"name":'Wins', "data": winning_data}]
-	title = {"text": 'bidding overtime'}
+	title = {"text": ''}
 	xAxis = {"title": {"text": 'time'}, "categories": time_sequence}
 	yAxis = {"title": {"text": 'Impressions'}, "plotLines": [{"value": 0,"width": 1,"color": '#808080'}]}
 	legend = {"layout": 'vertical',"align": 'right',"verticalAlign": 'middle',"borderWidth": 0}
 	return render_template('index.html', 
-		TotalImps=sum_imps,
+		TotalImps=sum_imps_formatted,
 		PctBid = pct_bid,
 		PctWin = pct_win,
 		StartTime=time_sequence[0],

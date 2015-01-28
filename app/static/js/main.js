@@ -1,13 +1,21 @@
 $(document).ready(function() {
-	 $(chart_id).highcharts({
+
+	$("li").each(function(){
+		if ($(this).data("id") == $('body').data("title")) {
+			$(this).addClass('selected');	
+		}
+		else {
+			$(this).removeClass('selected');
+		};
+	});
+
+	$('.chart').highcharts({
 		chart: chart,
 		title: title,
 		xAxis: xAxis,
 		yAxis: yAxis,
 		series: series,
 	});
-
-
 	
 /*	var campaign_id_list =  [6596095, 6513780, 6766936, 6513786];
 
@@ -17,14 +25,6 @@ $(document).ready(function() {
 		
 	}
 */
-
-	$("li").each(function(){
-		$(this).hover(function(){
-			$(this).addClass('selected');	
-		}, function (){
-			$(this).removeClass('selected');
-		});
-	});
 
 
 });

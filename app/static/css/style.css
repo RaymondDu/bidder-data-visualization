@@ -1,7 +1,3 @@
-html {
-  font-family: 'helvetica neue';
-  font-color: #666;
-}
 .clearfix {
   clear: both;
 }
@@ -10,28 +6,26 @@ li,
   padding-left: 20px;
   padding-right: 20px;
 }
-h1,
-h2,
-h3 {
-  font-family: avenir;
-}
 h1 {
-  font-size: 20pt;
-  font-weight: 800;
-  margin: 40px 0;
+  font-size: 16px;
+  font-family: 'Lato', serif;
+  font-weight: 400;
+  font-size: 25px;
+  margin: 30px 0 30px 0;
 }
 h1 span {
   font-weight: normal;
-  color: #666;
+  font-size: 15px;
 }
 h2 {
-  color: #fff;
-  font-size: 13pt;
-  padding: 40px 0 0px 20px;
+  font-size: 16px;
+  font-family: 'Lato', serif;
+  font-weight: 400;
 }
 h3 {
-  font-size: 12pt;
-  font-weight: 800;
+  font-size: 16px;
+  font-family: 'Lato', serif;
+  font-weight: 400;
   margin-top: 10px;
   color: #666;
 }
@@ -44,11 +38,14 @@ em {
 }
 hr {
   border: none;
-  border-top: 1px solid #999;
-  margin-bottom: 30px;
-  width: 75%;
+  border-top: 1px solid #ccc;
+  width: 85%;
 }
-main {
+body {
+  font-size: 12px;
+  line-height: 17px;
+  font-family: 'Roboto', 'helvetica neue', san-serif;
+  color: #666;
   *zoom: 1;
   width: auto;
   max-width: 100%;
@@ -58,111 +55,187 @@ main {
   margin-left: auto;
   padding-left: 0;
   padding-right: 0;
+  background: #f6f6f6;
 }
-main:before,
-main:after {
+body:before,
+body:after {
   content: '';
   display: table;
 }
-main:after {
+body:after {
   clear: both;
 }
-main #side_nav {
-  float: left;
+body #side_nav {
+  position: absolute;
   display: block;
-  *zoom: 1;
-  float: left;
-  clear: none;
-  text-align: inherit;
-  width: 17.6%;
-  margin-left: 0%;
-  margin-right: 3%;
-  background: #000;
-  height: 1000px;
-  border-right: 10px solid #f93;
+  width: 200px;
+  background: #f1f1f1;
+  min-height: 650px;
+  height: 100%;
 }
-main #side_nav:before,
-main #side_nav:after {
-  content: '';
-  display: table;
-}
-main #side_nav:after {
-  clear: both;
-}
-main #side_nav:last-child {
-  margin-right: 0%;
-}
-main #side_nav img {
-  width: 90%;
-}
-main #side_nav ul {
-  margin-top: 20px;
-}
-main #side_nav li {
-  color: #a2a2a2;
-  padding: 20px;
+body #side_nav #logo {
+  background: #1f2123;
+  display: block;
+  height: 55px;
   transition: all 200ms;
   -webkit-transition: all 200ms;
 }
-main #side_nav .selected {
-  background: #666564;
-  color: #fff;
+body #side_nav #logo img {
+  height: 55px;
+  margin-left: 6px;
 }
-main #summary {
+body #side_nav #logo:hover {
+  background: #353738;
+}
+body #side_nav nav {
+  text-align: left;
+}
+body #side_nav h2 {
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 33px 0 0px 15px;
+}
+body #side_nav ul {
+  margin-top: 5px;
+}
+body #side_nav li {
+  padding: 10px 15px;
+  transition: all 200ms;
+  -webkit-transition: all 200ms;
+}
+body #side_nav li:hover,
+body #side_nav .selected {
+  background: #d0d0d0;
+}
+body #content {
+  margin-left: 200px;
+  display: inline-block;
+  width: calc(100% - 200px);
+}
+body #content #heading-main {
+  width: 100%;
+  height: 55px;
+  background: #1f2123;
   margin: 0;
-  background: #e3e2e5;
+  padding: 0;
 }
-main #summary div {
+body #content #heading-main h1 {
+  margin-top: 15px;
+  color: #f1f1f1;
+}
+body #content #heading-main li {
+  display: inline-block;
+}
+body #content main {
+  padding: 0px 20px;
+}
+body #content main h1 span {
+  display: block;
+  margin-top: 10px;
+}
+body #content main #homepage .container {
   *zoom: 1;
   float: left;
   clear: none;
   text-align: inherit;
-  width: 33.3333333333333%;
+  width: 23.5%;
   margin-left: 0%;
-  margin-right: 0%;
-  padding: 0 0 30px 0;
-  text-align: center;
+  margin-right: 2%;
 }
-main #summary div:before,
-main #summary div:after {
+body #content main #homepage .container:before,
+body #content main #homepage .container:after {
   content: '';
   display: table;
 }
-main #summary div:after {
+body #content main #homepage .container:after {
   clear: both;
 }
-main #summary div:last-child {
+body #content main #homepage .container:nth-child(4n) {
+  margin-right: 0%;
+  float: right;
+}
+body #content main #homepage .container:nth-child(4n+1) {
+  clear: both;
+}
+body #content main #homepage .container :hover {
+  background: #efefef;
+  transition: all 200ms;
+  -webkit-transition: all 200ms;
+}
+body #content main #homepage .campaign {
+  display: block;
+  background: #fff;
+  border: 1px solid #e3e2e5;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  padding: 0px 12px;
+}
+body #content main #homepage .campaign h2 {
+  display: block;
+  font-size: 16px;
+  padding: 0;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  margin-right: 5px;
+}
+body #content main #homepage .campaign .homepage-stats {
+  margin-top: 10px;
+  margin-bottom: 12px;
+}
+body #content main #summary .container {
+  *zoom: 1;
+  float: left;
+  clear: none;
+  text-align: inherit;
+  width: 31.999999999999964%;
+  margin-left: 0%;
+  margin-right: 2%;
+}
+body #content main #summary .container:before,
+body #content main #summary .container:after {
+  content: '';
+  display: table;
+}
+body #content main #summary .container:after {
+  clear: both;
+}
+body #content main #summary .container:last-child {
   margin-right: 0%;
 }
-main #summary div .big_stat {
-  font-size: 30pt;
+body #content main #summary .stats {
+  background: #fff;
+  border: 1px solid #e3e2e5;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  padding: 0px 12px 12px;
+  min-height: 50px;
+}
+body #content main #summary .stats .big_stat {
+  display: block;
+  font-size: 25px;
   color: #1f9aa2;
+  padding: 0px 0 5px;
+  margin-top: 17px;
+  margin-right: 5px;
 }
-main #content {
-  display: inline-block;
-  *zoom: 1;
-  float: left;
-  clear: none;
-  text-align: inherit;
-  width: 69.1%;
-  margin-left: 0%;
-  margin-right: 3%;
-  padding-top: 20px;
+body #content main #chart-title {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background: #fff;
+  border: 1px solid #e3e2e5;
+  padding: 12px;
 }
-main #content:before,
-main #content:after {
-  content: '';
-  display: table;
+body #content main .chart {
+  background: #fff;
+  border: 1px solid #e3e2e5;
+  border-top: none;
+  height: 400px;
+  padding: 40px 10px 20px;
 }
-main #content:after {
-  clear: both;
+.homepage_content {
+  margin-left: 0px !important;
+  width: 100% !important;
 }
-main #content:last-child {
-  margin-right: 0%;
-}
-main #content #cookie li {
-  display: inline-block;
-  font-size: 10pt;
-  padding: 8px;
-  background: #f93;
+.homepage_nav {
+  background: transparent !important;
 }
