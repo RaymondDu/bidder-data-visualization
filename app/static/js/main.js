@@ -4,7 +4,6 @@ $(document).ready(function() {
         campaign_id = campaignList[x]["id"];
         campaign_name = campaignList[x]["name"];
         $("nav ul").append("<a href='/campaigns/" + campaign_id + "'><li data-id='" + campaign_id + "'>" + campaign_id + " - " + campaign_name + "</li></a>");
-        console.log("<a href='/campaigns/" + campaign_id + "'><li data-id='" + campaign_id + "'>" + campaign_id + " - " + campaign_name + "</li></a>");
     }
 
 	$("li").each(function(){
@@ -16,14 +15,7 @@ $(document).ready(function() {
 		};
 	});
 
-	function test()
-	{
-		var campaign_id = document.getElementById("campaign_id").value;
-		var campaign_name = document.getElementById("campaign_name").value;
-		console.log('hello');
-	}
-
-	if (chart) {	
+	if (typeof chart == 'object') {	
 		$('.chart').highcharts({
 			chart: chart,
 			title: title,
@@ -44,3 +36,12 @@ $(document).ready(function() {
 
 
 });
+
+
+
+	function test()
+	{
+		var campaign_id = document.getElementById("campaign_id").value;
+		var campaign_name = document.getElementById("campaign_name").value;
+		console.log('hello');
+	}
