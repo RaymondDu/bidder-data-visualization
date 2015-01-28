@@ -47,11 +47,12 @@ $(document).ready(function() {
 function test()
 {
 	if (campaign_id != "" && campaign_name != "") {
-		$.postJSON($SCRIPT_ROOT + '/admin/add', {
+		$.getJSON($SCRIPT_ROOT + '/admin/add', {
 			id: $('input#campaign_id').val(),
 			name: $('input#campaign_name').val()
 		}, function(data) {
-			$('#result').text(data.result);
+			console.log(data.MemberName);
+			console.log(data.CampaignList);
 		});
 		return false
 	} else {

@@ -170,7 +170,7 @@ body #content main #homepage .container {
   float: left;
   clear: none;
   text-align: inherit;
-  width: 23.5%;
+  width: 31.999999999999964%;
   margin-left: 0%;
   margin-right: 2%;
 }
@@ -182,11 +182,11 @@ body #content main #homepage .container:after {
 body #content main #homepage .container:after {
   clear: both;
 }
-body #content main #homepage .container:nth-child(4n) {
+body #content main #homepage .container:nth-child(3n) {
   margin-right: 0%;
   float: right;
 }
-body #content main #homepage .container:nth-child(4n+1) {
+body #content main #homepage .container:nth-child(3n+1) {
   clear: both;
 }
 body #content main #homepage .container :hover {
