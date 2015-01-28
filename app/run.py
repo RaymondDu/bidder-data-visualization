@@ -13,7 +13,7 @@ app = Flask(__name__)
 def index():	
 	campaign_list = []
 	campaign_list = getCampaignList()
-	return render_template('index_landing.html', MemberName="AT&T", CampaignList=campaign_list)
+	return render_template('index_landing.html', MemberName="Xaxis", CampaignList=campaign_list)
 
 @app.route('/admin/delete')
 def deleteCampaign():
@@ -22,7 +22,7 @@ def deleteCampaign():
 	r = requests.delete(url)
 	status_code = r.status_code
 	if(status_code != 204):
-		abort(404)
+		print "Delete returned status code: "+str(status_code)+"\n"
     # refreshing the campaign list
 	campaign_list = []
 	campaign_list = getCampaignList()
@@ -58,7 +58,7 @@ def chartById(campaign_id):
 	status_code = r.status_code
 	json_data = r.json()
 	if(json_data["numberOfElements"] == 0):
-		abort(404)
+		print "GET 0 elements\n"
 
 	inventory_data = []
 	bidding_data = []
@@ -82,7 +82,7 @@ def chartById(campaign_id):
 	winning_data.reverse()
 	time_sequence.reverse()
 
-	member_name = "AT&T"
+	member_name = "Xaxis"
 	campaignid = campaign_id
 	#inventory_data = [50, 100, 200, 150, 300, 500, 800, 400, 100, 20]
 	#bidding_data   = [45, 60,  150, 50,  290, 250, 600, 100, 90,  15]
