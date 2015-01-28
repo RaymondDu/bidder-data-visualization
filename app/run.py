@@ -18,12 +18,11 @@ def index():
 @app.route('/admin/delete')
 def deleteCampaign():
 	campaign_id = request.args.get('id', 0, type=str)
-	campaign_id = "1"
 	url = "http://777.bjohn.dev.nym2.adnexus.net:8880/campaigns/"+campaign_id
 	r = requests.delete(url)
 	status_code = r.status_code
 	if(status_code != 204):
-		print "Delete returned status code is: "+str(status_code)
+		abort(404)
     # refreshing the campaign list
 	campaign_list = []
 	campaign_list = getCampaignList()
@@ -58,6 +57,8 @@ def chartById(campaign_id):
 	# process response
 	status_code = r.status_code
 	json_data = r.json()
+	if(json_data["numberOfElements"] == 0):
+		abort(404)
 
 	inventory_data = []
 	bidding_data = []
@@ -157,7 +158,12 @@ def testGetCampaignById():
 	print bidding_data
 	print winning_data
 	return
-	
+
+@app.errorhandler(404)
+def page_not_found(e):
+	return render_template('404.html'), 404
+
+
 def getCampaignList():
 	campaign_list = []
 	url = "http://777.bjohn.dev.nym2.adnexus.net:8880/campaigns"
