@@ -51,8 +51,10 @@ function test()
 			id: $('input#campaign_id').val(),
 			name: $('input#campaign_name').val()
 		}, function(data) {
-			console.log(data.MemberName);
-			console.log(data.CampaignList);
+			campaignList = data.result;
+			location.reload();
+			//console.log(data.result);
+			//console.log(data.CampaignList);
 		});
 		return false
 	} else {

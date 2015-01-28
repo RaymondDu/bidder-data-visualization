@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import requests
 import datetime
 import locale
@@ -22,6 +22,7 @@ def addCampaign():
 	#print "CampaignID: "+str(campaign_id)+"\n"
 	#print "CampaignName: "+campaign_name+"\n"
 	#return
+	
 	url = 'http://777.bjohn.dev.nym2.adnexus.net:8880/campaigns'
 	payload = {"id":campaign_id, "name":campaign_name}
 	headers = {'content-type': 'application/json'}
@@ -33,7 +34,10 @@ def addCampaign():
     # refreshing the campaign list
 	campaign_list = []
 	campaign_list = getCampaignList()
-	return render_template('index_landing.html', MemberName="AT&T", CampaignList=campaign_list)
+	
+	#fake_list = [{"id":1, "name":"name1"}, {"id":2, "name":"name2"}]
+	return jsonify(result=campaign_list)
+	#return render_template('index_landing.html', MemberName="AT&T", CampaignList=campaign_list)
 
 @app.route('/campaigns/<campaign_id>')
 def chartById(campaign_id):
