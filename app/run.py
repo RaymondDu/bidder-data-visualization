@@ -106,6 +106,13 @@ def chartById(campaign_id):
 	pct_win = int(100*sum_wins/(float(sum_bids)+1))
 	# format biddable imps with commas
 	sum_imps_formatted = locale.format("%d", sum_imps, grouping=True)
+
+	start_time = "N/A"
+	end_time = "N/A"
+	if(len(time_sequence) > 0):
+		start_time = time_sequence[0]
+		end_time = time_sequence[len(time_sequence)-1]
+
 	# chart settings
 	chartID = 'chart_ID'
 	chart_type = 'column'
@@ -120,8 +127,8 @@ def chartById(campaign_id):
 		TotalImps=sum_imps_formatted,
 		PctBid = pct_bid,
 		PctWin = pct_win,
-		StartTime=time_sequence[0],
-		EndTime=time_sequence[9],
+		StartTime=start_time,
+		EndTime=end_time,
 		StatusCode=status_code, 
 		MemberName=member_name, 
 		CampaignID=campaignid, 
