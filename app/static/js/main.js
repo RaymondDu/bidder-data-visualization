@@ -18,6 +18,8 @@ $(document).ready(function() {
 
 	function test()
 	{
+		var campaign_id = document.getElementById("campaign_id").value;
+		var campaign_name = document.getElementById("campaign_name").value;
 		console.log('hello');
 	}
 
