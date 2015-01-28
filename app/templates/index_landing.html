@@ -42,7 +42,7 @@
                         <form>
                             <label>Campaign ID</label><input type='text' id='campaign_id'></input><br/>
                             <label>Campaign Description</label><input type='text' id='campaign_name'></input>
-                            <button type='submit' onclick="test()">Add Campaign</button>
+                            <button type='button' onclick="test();">Add Campaign</button>
                         </form>
                     </div>
                     <div id='homepage'>
@@ -52,14 +52,6 @@
 
         <script>
             var campaignList = {{ CampaignList|safe }}
-
-            for (x = 0; x < campaignList.length; x++) {
-                campaign_id = campaignList[x]["id"];
-                campaign_name = campaignList[x]["name"];
-                $('#homepage').append("<div class='container'><a href='/campaigns/" + campaign_id + "' class='campaign' id='total_biddable_imps'><h2>" + campaign_id + " - " + campaign_name + "</h2></a></div>");
-                console.log("<div class='container'><a href='/campaigns/" + campaign_id + "' class='campaign' id='total_biddable_imps'><h2>" + campaign_id + " - " + campaign_name + "</h2></a></div>");
-                console.log($("div#homepage"));
-            }
         </script>
         <script src="http://code.highcharts.com/highcharts.js"></script>
     </body>

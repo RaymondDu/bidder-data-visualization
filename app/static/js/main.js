@@ -6,6 +6,13 @@ $(document).ready(function() {
         $("nav ul").append("<a href='/campaigns/" + campaign_id + "'><li data-id='" + campaign_id + "'>" + campaign_id + " - " + campaign_name + "</li></a>");
     }
 
+	for (x = 0; x < campaignList.length; x++) {
+	    campaign_id = campaignList[x]["id"];
+	    campaign_name = campaignList[x]["name"];
+	    $('#homepage').append("<div class='container'><a href='/campaigns/" + campaign_id + "' class='campaign' id='total_biddable_imps'><h2>" + campaign_id + " - " + campaign_name + "</h2></a></div>");
+	    console.log("<div class='container'><a href='/campaigns/" + campaign_id + "' class='campaign' id='total_biddable_imps'><h2>" + campaign_id + " - " + campaign_name + "</h2></a></div>");
+	}
+
 	$("li").each(function(){
 		if ($(this).data("id") == $('body').data("title")) {
 			$(this).addClass('selected');	
@@ -37,11 +44,18 @@ $(document).ready(function() {
 
 });
 
+function test()
+{
+	var campaign_id = document.getElementById("campaign_id").value;
+	var campaign_name = document.getElementById("campaign_name").value;
 
-
-	function test()
-	{
-		var campaign_id = document.getElementById("campaign_id").value;
-		var campaign_name = document.getElementById("campaign_name").value;
-		console.log('hello');
+	if (campaign_id != "" && campaign_name != "") {
+		var request = {
+			"campaign_id": campaign_id,
+			"campaign_name": campaign_name
+		};
+		console.log(request);
+	} else {
+		$('form').append("<div class='msg'>Please fill in the campaign ID and name</div>");
 	}
+}
