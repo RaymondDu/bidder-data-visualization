@@ -16,6 +16,8 @@
         <link rel="stylesheet" href="../static/css/style.css">
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script type="text/javascript">
+        </script>
         <script src="../static/js/main.js"></script>
     </head>
     <body data-title="{{ CampaignID }}">
@@ -28,16 +30,6 @@
                     <h2>Campaign ID</h2>
                     <hr>
                     <ul>
-                        <a href="/campaigns/6596095"><li data-id='6596095'>6596095 - Data Targeted</li></a>
-                        <a href="/campaigns/6513780"><li data-id='6513780'>6513780 - Optimized to CPA</li></a>
-                        <a href="/campaigns/6766936"><li data-id='6766936'>6766936 - Abandoned Shopping Cart</li></a>
-                        <a href="/campaigns/6513786"><li data-id='6513786'>6513786 - Prospecting</li></a>
-                        <a href="/campaigns/6513761"><li>6513761 - Rubicon CPA Optimization</li></a>
-                        <a href="/campaigns/6513753"><li>6513753 - CPC Optimization</li></a>
-                        <a href="/campaigns/6596170"><li>6596170 - High Base Bid Remarketing</li></a>
-                        <a href="/campaigns/6513768"><li>6513768 - AdX CPA Optimization</li></a>
-                        <a href="/campaigns/6563080"><li>6563080 - Deal Targeting</li></a>
-                        <a href="/campaigns/6703035"><li>6703035 - High-bid Remarketing</li></a>
                     </ul>
                 </nav>
             </section>
@@ -80,7 +72,6 @@
                     </div>
                 </main>
             </section>
-
         <script>
             var chart_id = {{ chartID|safe }}
             var series   = {{ series|safe }}
@@ -89,6 +80,7 @@
             var yAxis    = {{ yAxis|safe }}
             var chart    = {{ chart|safe }}
             var legend   = {{ legend|safe }}
+            var campaignList = {{ CampaignList|safe }}
         </script>
         <script src="http://code.highcharts.com/highcharts.js"></script>
     </body>

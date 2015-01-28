@@ -16,6 +16,9 @@
         <link rel="stylesheet" href="../static/css/style.css">
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script type="text/javascript">
+
+        </script>
         <script src="../static/js/main.js"></script>
     </head>
     <body>
@@ -36,6 +39,12 @@
                 <main>
                     <h1>{{ MemberName }}<br><span>Campaign Summary</span></h1>
                     <div id='homepage'>
+                        <div class='container'>
+                            <form>
+                                <input type='text'>
+                                <input type='submit' value=>
+                            </form>
+                        </div>
                         <div class='container'>
                             <a href="/campaigns/6596095" class='campaign' id='total_biddable_imps'>
                                 <h2>6596095 - Data Targeted</h2>
@@ -158,6 +167,7 @@
             var yAxis    = {{ yAxis|safe }}
             var chart    = {{ chart|safe }}
             var legend   = {{ legend|safe }}
+            var campaignList = {{ CampaignList }}
         </script>
         <script src="http://code.highcharts.com/highcharts.js"></script>
     </body>

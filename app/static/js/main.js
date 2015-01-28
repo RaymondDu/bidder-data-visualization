@@ -1,5 +1,12 @@
 $(document).ready(function() {
 
+    for (x = 0; x < campaignList.length; x++) {
+        campaign_id = campaignList[x]["id"];
+        campaign_name = campaignList[x]["name"];
+        $("nav ul").append("<a href='/campaigns/" + campaign_id + "'><li data-id='" + campaign_id + "'>" + campaign_id + " - " + campaign_name + "</li></a>");
+        console.log("<a href='/campaigns/" + campaign_id + "'><li data-id='" + campaign_id + "'>" + campaign_id + " - " + campaign_name + "</li></a>");
+    }
+
 	$("li").each(function(){
 		if ($(this).data("id") == $('body').data("title")) {
 			$(this).addClass('selected');	
