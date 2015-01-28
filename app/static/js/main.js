@@ -9,8 +9,7 @@ $(document).ready(function() {
 	for (x = 0; x < campaignList.length; x++) {
 	    campaign_id = campaignList[x]["id"];
 	    campaign_name = campaignList[x]["name"];
-	    $('#homepage').append("<div class='container'><a href='/campaigns/" + campaign_id + "' class='campaign' id='total_biddable_imps'><h2>" + campaign_id + " - " + campaign_name + "</h2></a></div>");
-	    console.log("<div class='container'><a href='/campaigns/" + campaign_id + "' class='campaign' id='total_biddable_imps'><h2>" + campaign_id + " - " + campaign_name + "</h2></a></div>");
+	    $('#homepage').append("<div class='container'><a href='/campaigns/" + campaign_id + "' class='campaign'><h2>" + campaign_id + " - " + campaign_name + "</h2></a></div>");
 	}
 
 	$("li").each(function(){
@@ -51,8 +50,14 @@ function test()
 			id: $('input#campaign_id').val(),
 			name: $('input#campaign_name').val()
 		}, function(data) {
-			console.log(data.MemberName);
-			console.log(data.CampaignList);
+			$('#homepage').empty();
+
+			for (x = 0; x < data.result.length; x++) {
+			    campaign_id = data.result[x]["id"];
+			    campaign_name = data.result[x]["name"];
+			    $('#homepage').append("<div class='container'><a href='/campaigns/" + campaign_id + "' class='campaign'><h2>" + campaign_id + " - " + campaign_name + "</h2></a></div>");
+			}
+
 		});
 		return false
 	} else {
