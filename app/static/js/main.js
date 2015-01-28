@@ -16,13 +16,20 @@ $(document).ready(function() {
 		};
 	});
 
-	$('.chart').highcharts({
-		chart: chart,
-		title: title,
-		xAxis: xAxis,
-		yAxis: yAxis,
-		series: series,
-	});
+	function test()
+	{
+		console.log('hello');
+	}
+
+	if (chart) {	
+		$('.chart').highcharts({
+			chart: chart,
+			title: title,
+			xAxis: xAxis,
+			yAxis: yAxis,
+			series: series,
+		});
+	};
 	
 /*	var campaign_id_list =  [6596095, 6513780, 6766936, 6513786];
 

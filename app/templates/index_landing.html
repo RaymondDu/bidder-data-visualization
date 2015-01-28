@@ -16,9 +16,8 @@
         <link rel="stylesheet" href="../static/css/style.css">
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-        <script type="text/javascript">
-
-        </script>
+        
+        
         <script src="../static/js/main.js"></script>
     </head>
     <body>
@@ -38,136 +37,29 @@
 
                 <main>
                     <h1>{{ MemberName }}<br><span>Campaign Summary</span></h1>
+
+                    <div id='add_campaign_form'>
+                        <form>
+                            <label>Campaign ID</label><input type='text'><br/>
+                            <label>Campaign Description</label><input type='text'>
+                            <button class="button" type='submit' value='Add Campaign' onclick="test()">Add Campaign</button>
+                        </form>
+                    </div>
                     <div id='homepage'>
-                        <div class='container'>
-                            <form>
-                                <input type='text'>
-                                <input type='submit' value=>
-                            </form>
-                        </div>
-                        <div class='container'>
-                            <a href="/campaigns/6596095" class='campaign' id='total_biddable_imps'>
-                                <h2>6596095 - Data Targeted</h2>
-
-                                <div class='homepage-stats'>
-                                    Imps Seen: {{ ImpsSeen }}<br/>
-                                    Bid Rate: {{ BidRate }}<br/>
-                                    Win Rate: {{ WinRate }}
-                                </div>
-                            </a>
-                        </div>
-                        <div class='container'>
-                            <a href="/campaigns/6513780" class='campaign' id='total_biddable_imps'>
-                                <h2>6513780 - Optimized to CPA</h2>
-
-                                <div class='homepage-stats'>
-                                    Imps Seen: {{ ImpsSeen }}<br/>
-                                    Bid Rate: {{ BidRate }}<br/>
-                                    Win Rate: {{ WinRate }}
-                                </div>
-                            </a>
-                        </div>
-                        <div class='container'>
-                            <a href="/campaigns/6766936" class='campaign' id='total_biddable_imps'>
-                                <h2>6766936 - Abandoned Shopping Cart</h2>
-
-                                <div class='homepage-stats'>
-                                    Imps Seen: {{ ImpsSeen }}<br/>
-                                    Bid Rate: {{ BidRate }}<br/>
-                                    Win Rate: {{ WinRate }}
-                                </div>
-                            </a>
-                        </div>
-                        <div class='container'>
-                            <a href="/campaigns/6596095" class='campaign' id='total_biddable_imps'>
-                                <h2>6596095 - Data Targeted</h2>
-
-                                <div class='homepage-stats'>
-                                    Imps Seen: {{ ImpsSeen }}<br/>
-                                    Bid Rate: {{ BidRate }}<br/>
-                                    Win Rate: {{ WinRate }}
-                                </div>
-                            </a>
-                        </div>
-                        <div class='container'>
-                            <a href="/campaigns/6596095" class='campaign' id='total_biddable_imps'>
-                                <h2>6596095 - Data Targeted</h2>
-
-                                <div class='homepage-stats'>
-                                    Imps Seen: {{ ImpsSeen }}<br/>
-                                    Bid Rate: {{ BidRate }}<br/>
-                                    Win Rate: {{ WinRate }}
-                                </div>
-                            </a>
-                        </div>
-                        <div class='container'>
-                            <a href="/campaigns/6596095" class='campaign' id='total_biddable_imps'>
-                                <h2>6596095 - Data Targeted</h2>
-
-                                <div class='homepage-stats'>
-                                    Imps Seen: {{ ImpsSeen }}<br/>
-                                    Bid Rate: {{ BidRate }}<br/>
-                                    Win Rate: {{ WinRate }}
-                                </div>
-                            </a>
-                        </div>
-                        <div class='container'>
-                            <a href="/campaigns/6596095" class='campaign' id='total_biddable_imps'>
-                                <h2>6596095 - Data Targeted</h2>
-
-                                <div class='homepage-stats'>
-                                    Imps Seen: {{ ImpsSeen }}<br/>
-                                    Bid Rate: {{ BidRate }}<br/>
-                                    Win Rate: {{ WinRate }}
-                                </div>
-                            </a>
-                        </div>
-                        <div class='container'>
-                            <a href="/campaigns/6596095" class='campaign' id='total_biddable_imps'>
-                                <h2>6596095 - Data Targeted</h2>
-
-                                <div class='homepage-stats'>
-                                    Imps Seen: {{ ImpsSeen }}<br/>
-                                    Bid Rate: {{ BidRate }}<br/>
-                                    Win Rate: {{ WinRate }}
-                                </div>
-                            </a>
-                        </div>
-                        <div class='container'>
-                            <a href="/campaigns/6596095" class='campaign' id='total_biddable_imps'>
-                                <h2>6596095 - Data Targeted</h2>
-
-                                <div class='homepage-stats'>
-                                    Imps Seen: {{ ImpsSeen }}<br/>
-                                    Bid Rate: {{ BidRate }}<br/>
-                                    Win Rate: {{ WinRate }}
-                                </div>
-                            </a>
-                        </div>
-                        <div class='container'>
-                            <a href="/campaigns/6596095" class='campaign' id='total_biddable_imps'>
-                                <h2>6596095 - Data Targeted</h2>
-
-                                <div class='homepage-stats'>
-                                    Imps Seen: {{ ImpsSeen }}<br/>
-                                    Bid Rate: {{ BidRate }}<br/>
-                                    Win Rate: {{ WinRate }}
-                                </div>
-                            </a>
-                        </div>
                     </div>
                 </main>
             </section>
 
         <script>
-            var chart_id = {{ chartID|safe }}
-            var series   = {{ series|safe }}
-            var title    = {{ title|safe }}
-            var xAxis    = {{ xAxis|safe }}
-            var yAxis    = {{ yAxis|safe }}
-            var chart    = {{ chart|safe }}
-            var legend   = {{ legend|safe }}
-            var campaignList = {{ CampaignList }}
+            var campaignList = {{ CampaignList|safe }}
+
+            for (x = 0; x < campaignList.length; x++) {
+                campaign_id = campaignList[x]["id"];
+                campaign_name = campaignList[x]["name"];
+                $('#homepage').append("<div class='container'><a href='/campaigns/" + campaign_id + "' class='campaign' id='total_biddable_imps'><h2>" + campaign_id + " - " + campaign_name + "</h2></a></div>");
+                console.log("<div class='container'><a href='/campaigns/" + campaign_id + "' class='campaign' id='total_biddable_imps'><h2>" + campaign_id + " - " + campaign_name + "</h2></a></div>");
+                console.log($("div#homepage"));
+            }
         </script>
         <script src="http://code.highcharts.com/highcharts.js"></script>
     </body>

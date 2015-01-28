@@ -11,7 +11,10 @@ app = Flask(__name__)
 #when you hit '/' run this function
 def index():	
 
-	return render_template('index_landing.html', MemberName="AT&T")
+	campaignlist = [{"id":6596095,"name":"Data Targeted"},{"id":6513780,"name":"Optimized to CPA"},{"id":6766936,"name":"Abandoned Shopping Cart"},{"id":6513786,"name":"Prospecting"}]
+	
+	return render_template('index_landing.html', MemberName="AT&T", 
+		CampaignList = campaignlist)
 
 @app.route('/campaigns/<campaign_id>')
 
