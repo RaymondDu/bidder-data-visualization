@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import requests
 import datetime
 import locale
@@ -19,16 +19,15 @@ def index():
 def addCampaign():
 	campaign_id = request.args.get('id', 0, type=int)
 	campaign_name = request.args.get('name', 0, type=str)
-	print "CampaignID: "+campaign_id+"\n"
-	print "CampaignName: "+campaign_name+"\n"
-	return
+	#print "CampaignID: "+str(campaign_id)+"\n"
+	#print "CampaignName: "+campaign_name+"\n"
+	#return
 	url = 'http://777.bjohn.dev.nym2.adnexus.net:8880/campaigns'
 	payload = {"id":campaign_id, "name":campaign_name}
 	headers = {'content-type': 'application/json'}
 	r = requests.post(url, data=json.dumps(payload), headers=headers)
 	status_code = r.status_code
-	print "StatusCode is: "+status_code
-	return
+	print "StatusCode is: "+str(status_code) + "\n"
 	if(status_code != 201):
 		print "StatusCode is not 201 but is: "+status_code+"\n"
     # refreshing the campaign list
