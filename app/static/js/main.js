@@ -9,8 +9,7 @@ $(document).ready(function() {
 	for (x = 0; x < campaignList.length; x++) {
 	    campaign_id = campaignList[x]["id"];
 	    campaign_name = campaignList[x]["name"];
-	    $('#homepage').append("<div class='container'><a href='/campaigns/" + campaign_id + "' class='campaign' id='total_biddable_imps'><h2>" + campaign_id + " - " + campaign_name + "</h2></a></div>");
-	    console.log("<div class='container'><a href='/campaigns/" + campaign_id + "' class='campaign' id='total_biddable_imps'><h2>" + campaign_id + " - " + campaign_name + "</h2></a></div>");
+	    $('#homepage').append("<div class='container'><a href='/campaigns/" + campaign_id + "' class='campaign' data-id='" + campaign_id + "'><h2>" + campaign_id + " - " + campaign_name + "</h2></a><button class='button-delete'>x</button></div>");
 	}
 
 	$("li").each(function(){
@@ -21,6 +20,22 @@ $(document).ready(function() {
 			$(this).removeClass('selected');
 		};
 	});
+
+	$('.container').each(function(){
+		$(this).hover(function(){
+			$(this).children('button').css({'display':'block'});
+		}, function(){
+			$(this).children('button').css({'display':'none'});
+		});
+	});
+
+
+
+	$('button').click(function() {
+		deleteCampaign($(this).siblings('.campaign').data('id'));
+	});
+
+
 
 	if (typeof chart == 'object') {	
 		$('.chart').highcharts({
@@ -44,7 +59,7 @@ $(document).ready(function() {
 
 });
 
-function add()
+function addMember()
 {
 	if (campaign_id != "" && campaign_name != "") {
 		$.getJSON($SCRIPT_ROOT + '/admin/add', {
@@ -60,3 +75,15 @@ function add()
 	}
 }
 
+function deleteCampaign(campaign_id)
+{
+	$.getJSON($SCRIPT_ROOT + '/admin/delete', {
+		id: campaign_id,
+	}, function(data) {
+		campaignList = data.result;
+		location.reload();
+		//console.log(data.result);
+		//console.log(data.CampaignList);
+	});
+	return false
+}

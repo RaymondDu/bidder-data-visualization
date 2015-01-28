@@ -71,7 +71,6 @@ body #side_nav {
   width: 200px;
   background: #f1f1f1;
   min-height: 650px;
-  height: 100%;
 }
 body #side_nav #logo {
   background: #1f2123;
@@ -166,6 +165,7 @@ body #content main #add_campaign_form .msg {
   color: #f00;
 }
 body #content main #homepage .container {
+  position: relative;
   *zoom: 1;
   float: left;
   clear: none;
@@ -194,7 +194,26 @@ body #content main #homepage .container :hover {
   transition: all 200ms;
   -webkit-transition: all 200ms;
 }
+body #content main #homepage .container .button-delete {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: calc(50% - 20px);
+  right: 10px;
+  border-radius: 50%;
+  border: none;
+  content: 'X';
+  text-align: center;
+  color: #fff;
+  background: #f00;
+  display: none;
+  height: 20px;
+  width: 20px;
+  transition: all 200ms;
+  -webkit-transition: all 200ms;
+}
 body #content main #homepage .campaign {
+  position: relative;
   display: block;
   background: #fff;
   border: 1px solid #e3e2e5;
