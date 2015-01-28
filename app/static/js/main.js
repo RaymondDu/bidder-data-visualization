@@ -68,8 +68,6 @@ function addMember()
 		}, function(data) {
 			campaignList = data.result;
 			location.reload();
-			//console.log(data.result);
-			//console.log(data.CampaignList);
 		});
 		return false
 	} else {

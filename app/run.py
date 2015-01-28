@@ -15,13 +15,24 @@ def index():
 	campaign_list = getCampaignList()
 	return render_template('index_landing.html', MemberName="AT&T", CampaignList=campaign_list)
 
+@app.route('/admin/delete')
+def deleteCampaign():
+	campaign_id = request.args.get('id', 0, type=str)
+	campaign_id = "1"
+	url = "http://777.bjohn.dev.nym2.adnexus.net:8880/campaigns/"+campaign_id
+	r = requests.delete(url)
+	status_code = r.status_code
+	if(status_code != 204):
+		print "Delete returned status code is: "+str(status_code)
+    # refreshing the campaign list
+	campaign_list = []
+	campaign_list = getCampaignList()
+	return jsonify(result=campaign_list)
+
 @app.route('/admin/add')
 def addCampaign():
 	campaign_id = request.args.get('id', 0, type=int)
 	campaign_name = request.args.get('name', 0, type=str)
-	#print "CampaignID: "+str(campaign_id)+"\n"
-	#print "CampaignName: "+campaign_name+"\n"
-	#return
 	
 	url = 'http://777.bjohn.dev.nym2.adnexus.net:8880/campaigns'
 	payload = {"id":campaign_id, "name":campaign_name}
@@ -34,10 +45,7 @@ def addCampaign():
     # refreshing the campaign list
 	campaign_list = []
 	campaign_list = getCampaignList()
-	
-	#fake_list = [{"id":1, "name":"name1"}, {"id":2, "name":"name2"}]
 	return jsonify(result=campaign_list)
-	#return render_template('index_landing.html', MemberName="AT&T", CampaignList=campaign_list)
 
 @app.route('/campaigns/<campaign_id>')
 def chartById(campaign_id):
