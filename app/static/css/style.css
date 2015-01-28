@@ -133,6 +133,34 @@ body #content main h1 span {
   display: block;
   margin-top: 10px;
 }
+body #content main #add_campaign_form {
+  margin-bottom: 40px;
+  border: 2px dashed #e3e2e5;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+body #content main #add_campaign_form label,
+body #content main #add_campaign_form input,
+body #content main #add_campaign_form button {
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 3px;
+}
+body #content main #add_campaign_form label {
+  display: inline-block;
+  margin-right: 10px;
+  width: 150px;
+}
+body #content main #add_campaign_form input {
+  border: 1px solid #e3e2e5;
+}
+body #content main #add_campaign_form button {
+  display: block;
+  background: #1f9aa2;
+  border: none;
+  padding: 8px;
+  border-radius: 3px;
+}
 body #content main #homepage .container {
   *zoom: 1;
   float: left;
@@ -238,4 +266,6 @@ body #content main .chart {
 }
 .homepage_nav {
   background: transparent !important;
+  min-height: 0px !important;
+  height: 55px !important;
 }
