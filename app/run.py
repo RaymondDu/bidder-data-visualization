@@ -16,10 +16,14 @@ def index():
 	return render_template('index_landing.html', MemberName="AT&T", CampaignList=campaign_list)
 
 @app.route('/admin/add')
-def addCampaign(campaign_id, campaign_name):
+def addCampaign():
+	campaign_id = request.args.get('id', 0, type=int)
+	campaign_name = request.args.get('name', 0, type=str)
+	print "CampaignID: "+campaign_id+"\n"
+	print "CampaignName: "+campaign_name+"\n"
+	return
 	url = 'http://777.bjohn.dev.nym2.adnexus.net:8880/campaigns'
 	payload = {"id":campaign_id, "name":campaign_name}
-	payload = {"id":1, "name":"RaymondTest1"}
 	headers = {'content-type': 'application/json'}
 	r = requests.post(url, data=json.dumps(payload), headers=headers)
 	status_code = r.status_code
