@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import requests
 import datetime
 import locale
@@ -16,15 +16,18 @@ def index():
 	return render_template('index_landing.html', MemberName="AT&T", CampaignList=campaign_list)
 
 @app.route('/admin/add')
-def addCampaign(campaign_id, campaign_name):
+def addCampaign():
+	campaign_id = request.args.get('id', 0, type=int)
+	campaign_name = request.args.get('name', 0, type=str)
+	#print "CampaignID: "+str(campaign_id)+"\n"
+	#print "CampaignName: "+campaign_name+"\n"
+	#return
 	url = 'http://777.bjohn.dev.nym2.adnexus.net:8880/campaigns'
 	payload = {"id":campaign_id, "name":campaign_name}
-	payload = {"id":1, "name":"RaymondTest1"}
 	headers = {'content-type': 'application/json'}
 	r = requests.post(url, data=json.dumps(payload), headers=headers)
 	status_code = r.status_code
-	print "StatusCode is: "+status_code
-	return
+	print "StatusCode is: "+str(status_code) + "\n"
 	if(status_code != 201):
 		print "StatusCode is not 201 but is: "+status_code+"\n"
     # refreshing the campaign list
@@ -143,7 +146,6 @@ def testGetCampaignById():
 	print winning_data
 	return
 	
-@app.route('/test/getCampaignList')
 def getCampaignList():
 	campaign_list = []
 	url = "http://777.bjohn.dev.nym2.adnexus.net:8880/campaigns"
@@ -153,9 +155,7 @@ def getCampaignList():
 	json_data = r.json()
 	campaign_list = json_data["campaigns"]
 	#response = {"hostAddress":"10.6.32.168","count":4,"start":0,"end":3,"numberOfElements":4,"campaigns":[{"id":6596095,"name":"Data Targeted"},{"id":6513780,"name":"Optimized to CPA"},{"id":6766936,"name":"Abandoned Shopping Cart"},{"id":6513786,"name":"Prospecting"}]}
-	#campaign_list = response["campaigns"]
-	#print campaign_list
-	return campaign_list
+	return json.dumps(campaign_list)
 
 @app.route('/test/add')
 def addCampaignTest():
