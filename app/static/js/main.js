@@ -46,15 +46,14 @@ $(document).ready(function() {
 
 function test()
 {
-	var campaign_id = document.getElementById("campaign_id").value;
-	var campaign_name = document.getElementById("campaign_name").value;
-
 	if (campaign_id != "" && campaign_name != "") {
-		var request = {
-			"campaign_id": campaign_id,
-			"campaign_name": campaign_name
-		};
-		console.log(request);
+		$.getJSON($SCRIPT_ROOT + '/admin/add', {
+			id: $('input#campaign_id').val(),
+			name: $('input#campaign_name').val()
+		}, function(data) {
+			$('#result').text(data.result);
+		});
+		return false
 	} else {
 		$('form').append("<div class='msg'>Please fill in the campaign ID and name</div>");
 	}

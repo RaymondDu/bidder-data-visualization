@@ -161,6 +161,10 @@ body #content main #add_campaign_form button {
   padding: 8px;
   border-radius: 3px;
 }
+body #content main #add_campaign_form .msg {
+  padding: 15px 0 0;
+  color: #f00;
+}
 body #content main #homepage .container {
   *zoom: 1;
   float: left;
