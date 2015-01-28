@@ -59,7 +59,7 @@ body
 	#side_nav
 		position absolute
 		display block
-		width 200px
+		width 300px
 		background #f1f1f1
 		min-height 650px
 		#logo
@@ -87,9 +87,9 @@ body
 		.selected
 			background #d0d0d0
 	#content
-		margin-left 200px
+		margin-left 300px
 		display inline-block
-		width calc(100% - 200px)
+		width calc(100% - 300px)
 		#heading-main
 			width 100%
 			height 55px
@@ -106,30 +106,6 @@ body
 				display block
 				margin-top 10px
 			padding 0px 20px
-			#add_campaign_form
-				margin-bottom 40px
-				border 2px dashed #e3e2e5
-				padding-bottom 10px
-				padding-left 10px
-				label, input, button
-					margin-top 10px
-					padding 5px
-					border-radius 3px
-				label
-					display inline-block
-					margin-right 10px
-					width 150px
-				input
-					border 1px solid #e3e2e5
-				button
-					display block
-					background #1F9AA2 
-					border none
-					padding 8px
-					border-radius 3px
-				.msg
-					padding 15px 0 0
-					color red
 			#homepage
 				.container
 					position relative
@@ -200,6 +176,40 @@ body
 				border-top none
 				height 400px
 				padding 40px 10px 20px
+
+#add_campaign_form, #add_campaign_form_side
+	margin-bottom 40px
+	border 2px dashed #e3e2e5
+	padding-bottom 10px
+	padding-left 10px
+	label, input, button
+		margin-top 10px
+		padding 5px
+		border-radius 3px
+	label
+		display inline-block
+		margin-right 10px
+		width 150px
+	input
+		border 1px solid #e3e2e5
+	button
+		display block
+		background #1F9AA2 
+		border none
+		padding 8px
+		border-radius 3px
+	.msg
+		padding 15px 0 0
+		color red
+
+#add_campaign_form_side
+	border none
+	margin-bottom 0px
+	margin-top 10px
+	input
+		margin-top 0px
+
+
 
 .homepage_content
 	margin-left 0px !important

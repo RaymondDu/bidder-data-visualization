@@ -68,7 +68,7 @@ body:after {
 body #side_nav {
   position: absolute;
   display: block;
-  width: 200px;
+  width: 300px;
   background: #f1f1f1;
   min-height: 650px;
 }
@@ -107,9 +107,9 @@ body #side_nav .selected {
   background: #d0d0d0;
 }
 body #content {
-  margin-left: 200px;
+  margin-left: 300px;
   display: inline-block;
-  width: calc(100% - 200px);
+  width: calc(100% - 300px);
 }
 body #content #heading-main {
   width: 100%;
@@ -131,38 +131,6 @@ body #content main {
 body #content main h1 span {
   display: block;
   margin-top: 10px;
-}
-body #content main #add_campaign_form {
-  margin-bottom: 40px;
-  border: 2px dashed #e3e2e5;
-  padding-bottom: 10px;
-  padding-left: 10px;
-}
-body #content main #add_campaign_form label,
-body #content main #add_campaign_form input,
-body #content main #add_campaign_form button {
-  margin-top: 10px;
-  padding: 5px;
-  border-radius: 3px;
-}
-body #content main #add_campaign_form label {
-  display: inline-block;
-  margin-right: 10px;
-  width: 150px;
-}
-body #content main #add_campaign_form input {
-  border: 1px solid #e3e2e5;
-}
-body #content main #add_campaign_form button {
-  display: block;
-  background: #1f9aa2;
-  border: none;
-  padding: 8px;
-  border-radius: 3px;
-}
-body #content main #add_campaign_form .msg {
-  padding: 15px 0 0;
-  color: #f00;
 }
 body #content main #homepage .container {
   position: relative;
@@ -282,6 +250,54 @@ body #content main .chart {
   border-top: none;
   height: 400px;
   padding: 40px 10px 20px;
+}
+#add_campaign_form,
+#add_campaign_form_side {
+  margin-bottom: 40px;
+  border: 2px dashed #e3e2e5;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+#add_campaign_form label,
+#add_campaign_form_side label,
+#add_campaign_form input,
+#add_campaign_form_side input,
+#add_campaign_form button,
+#add_campaign_form_side button {
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 3px;
+}
+#add_campaign_form label,
+#add_campaign_form_side label {
+  display: inline-block;
+  margin-right: 10px;
+  width: 150px;
+}
+#add_campaign_form input,
+#add_campaign_form_side input {
+  border: 1px solid #e3e2e5;
+}
+#add_campaign_form button,
+#add_campaign_form_side button {
+  display: block;
+  background: #1f9aa2;
+  border: none;
+  padding: 8px;
+  border-radius: 3px;
+}
+#add_campaign_form .msg,
+#add_campaign_form_side .msg {
+  padding: 15px 0 0;
+  color: #f00;
+}
+#add_campaign_form_side {
+  border: none;
+  margin-bottom: 0px;
+  margin-top: 10px;
+}
+#add_campaign_form_side input {
+  margin-top: 0px;
 }
 .homepage_content {
   margin-left: 0px !important;

@@ -27,6 +27,13 @@
             <section id='side_nav'>
                 <a href="/" id='logo'><img src='../static/img/appnexus-logo.png'></a>
                 <nav>
+                    <div id='add_campaign_form_side'>
+                        <form>
+                            <label>Campaign ID</label><input type='text' id='campaign_id'></input><br/>
+                            <label>Campaign Description</label><input type='text' id='campaign_name'></input>
+                            <button type='button' onclick="addCampaign();">Add Campaign</button>
+                        </form>
+                    </div>
                     <h2>Campaign ID</h2>
                     <hr>
                     <ul>
@@ -42,7 +49,7 @@
                 </ul>
 
                 <main>
-                    <h1>{{ MemberName }} Campaign: {{ CampaignID }}<br><span>10 Minute Performance ({{ StartTime }} to {{ EndTime }} UTC)</span></h1>
+                    <h1>Campaign: {{ CampaignID }}<br><span>10 Minute Performance ({{ StartTime }} to {{ EndTime }} UTC)</span></h1>
                     <div id='summary'>
                         <div class='container'>
                             <div class='stats' id='total_biddable_imps'>
