@@ -143,7 +143,6 @@ def testGetCampaignById():
 	print winning_data
 	return
 	
-@app.route('/test/getCampaignList')
 def getCampaignList():
 	campaign_list = []
 	url = "http://777.bjohn.dev.nym2.adnexus.net:8880/campaigns"
@@ -153,9 +152,7 @@ def getCampaignList():
 	json_data = r.json()
 	campaign_list = json_data["campaigns"]
 	#response = {"hostAddress":"10.6.32.168","count":4,"start":0,"end":3,"numberOfElements":4,"campaigns":[{"id":6596095,"name":"Data Targeted"},{"id":6513780,"name":"Optimized to CPA"},{"id":6766936,"name":"Abandoned Shopping Cart"},{"id":6513786,"name":"Prospecting"}]}
-	#campaign_list = response["campaigns"]
-	#print campaign_list
-	return campaign_list
+	return json.dumps(campaign_list)
 
 @app.route('/test/add')
 def addCampaignTest():
