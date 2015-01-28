@@ -44,7 +44,7 @@ $(document).ready(function() {
 
 });
 
-function test()
+function add()
 {
 	if (campaign_id != "" && campaign_name != "") {
 		$.getJSON($SCRIPT_ROOT + '/admin/add', {
@@ -53,11 +53,10 @@ function test()
 		}, function(data) {
 			campaignList = data.result;
 			location.reload();
-			//console.log(data.result);
-			//console.log(data.CampaignList);
 		});
 		return false
 	} else {
 		$('form').append("<div class='msg'>Please fill in the campaign ID and name</div>");
 	}
 }
+
