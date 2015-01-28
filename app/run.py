@@ -2,6 +2,7 @@ from flask import Flask, render_template
 import requests
 import datetime
 import locale
+import json
 
 locale.setlocale(locale.LC_ALL, 'en_US')
 
@@ -14,8 +15,24 @@ def index():
 	campaign_list = getCampaignList()
 	return render_template('index_landing.html', MemberName="AT&T", CampaignList=campaign_list)
 
-@app.route('/campaigns/<campaign_id>')
+@app.route('/admin/add')
+def addCampaign(campaign_id, campaign_name):
+	url = 'http://777.bjohn.dev.nym2.adnexus.net:8880/campaigns'
+	payload = {"id":campaign_id, "name":campaign_name}
+	payload = {"id":1, "name":"RaymondTest1"}
+	headers = {'content-type': 'application/json'}
+	r = requests.post(url, data=json.dumps(payload), headers=headers)
+	status_code = r.status_code
+	print "StatusCode is: "+status_code
+	return
+	if(status_code != 201):
+		print "StatusCode is not 201 but is: "+status_code+"\n"
+    # refreshing the campaign list
+	campaign_list = []
+	campaign_list = getCampaignList()
+	return render_template('index_landing.html', MemberName="AT&T", CampaignList=campaign_list)
 
+@app.route('/campaigns/<campaign_id>')
 def chartById(campaign_id):
 	# pull the campaign list at first
 	campaign_list = []
@@ -51,7 +68,6 @@ def chartById(campaign_id):
 
 	member_name = "AT&T"
 	campaignid = campaign_id
-	campaignlist = [{"id":6596095,"name":"Data Targeted"},{"id":6513780,"name":"Optimized to CPA"},{"id":6766936,"name":"Abandoned Shopping Cart"},{"id":6513786,"name":"Prospecting"}]
 	#inventory_data = [50, 100, 200, 150, 300, 500, 800, 400, 100, 20]
 	#bidding_data   = [45, 60,  150, 50,  290, 250, 600, 100, 90,  15]
 	#winning_data   = [40, 30,  100, 35,  280, 100, 500, 20,  80,  15]
@@ -93,7 +109,6 @@ def chartById(campaign_id):
 		StatusCode=status_code, 
 		MemberName=member_name, 
 		CampaignID=campaignid, 
-		CampaignList = campaignlist,
 		chartID=chartID, 
 		chart=chart, 
 		series=series, 
@@ -139,8 +154,18 @@ def getCampaignList():
 	campaign_list = json_data["campaigns"]
 	#response = {"hostAddress":"10.6.32.168","count":4,"start":0,"end":3,"numberOfElements":4,"campaigns":[{"id":6596095,"name":"Data Targeted"},{"id":6513780,"name":"Optimized to CPA"},{"id":6766936,"name":"Abandoned Shopping Cart"},{"id":6513786,"name":"Prospecting"}]}
 	#campaign_list = response["campaigns"]
-	print campaign_list
+	#print campaign_list
 	return campaign_list
+
+@app.route('/test/add')
+def addCampaignTest():
+	url = 'http://777.bjohn.dev.nym2.adnexus.net:8880/campaigns'
+	payload = {"id":1, "name":"RaymondTest1"}
+	headers = {'content-type': 'application/json'}
+	r = requests.post(url, data=json.dumps(payload), headers=headers)
+	status_code = r.status_code
+	print "StatusCode is: "+status_code
+	return
 
 if __name__ == '__main__':
 	app.run(debug=True, host='0.0.0.0')
