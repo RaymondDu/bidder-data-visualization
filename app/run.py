@@ -10,14 +10,17 @@ app = Flask(__name__)
 @app.route('/')
 #when you hit '/' run this function
 def index():	
-
-	return render_template('index_landing.html', MemberName="AT&T")
+	campaign_list = []
+	campaign_list = getCampaignList()
+	return render_template('index_landing.html', MemberName="AT&T", CampaignList=campaign_list)
 
 @app.route('/campaigns/<campaign_id>')
 
 def chartById(campaign_id):
-	# curl get
-	
+	# pull the campaign list at first
+	campaign_list = []
+	campaign_list = getCampaignList()
+	# curl get	
 	url = "http://777.bjohn.dev.nym2.adnexus.net:8880/campaignstats/"+campaign_id
 	r = requests.get(url)	
 	# process response
@@ -80,6 +83,7 @@ def chartById(campaign_id):
 	yAxis = {"title": {"text": 'Impressions'}, "plotLines": [{"value": 0,"width": 1,"color": '#808080'}]}
 	legend = {"layout": 'vertical',"align": 'right',"verticalAlign": 'middle',"borderWidth": 0}
 	return render_template('index.html', 
+		CampaignList=campaign_list,
 		TotalImps=sum_imps_formatted,
 		PctBid = pct_bid,
 		PctWin = pct_win,
@@ -96,8 +100,8 @@ def chartById(campaign_id):
 		yAxis=yAxis, 
 		legend=legend)
 
-@app.route('/test')
-def test():
+@app.route('/test/getCampaignById')
+def testGetCampaignById():
 	inventory_data = []
 	bidding_data = []
 	winning_data = []
@@ -121,7 +125,21 @@ def test():
 	print bidding_data
 	print winning_data
 	return
-		
+	
+@app.route('/test/getCampaignList')
+def getCampaignList():
+	campaign_list = []
+	url = "http://777.bjohn.dev.nym2.adnexus.net:8880/campaigns"
+	r = requests.get(url)	
+	# process response
+	status_code = r.status_code
+	json_data = r.json()
+	campaign_list = json_data["campaigns"]
+	#response = {"hostAddress":"10.6.32.168","count":4,"start":0,"end":3,"numberOfElements":4,"campaigns":[{"id":6596095,"name":"Data Targeted"},{"id":6513780,"name":"Optimized to CPA"},{"id":6766936,"name":"Abandoned Shopping Cart"},{"id":6513786,"name":"Prospecting"}]}
+	#campaign_list = response["campaigns"]
+	print campaign_list
+	return campaign_list
+
 if __name__ == '__main__':
 	app.run(debug=True, host='0.0.0.0')
 
